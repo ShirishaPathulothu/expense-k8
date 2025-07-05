@@ -64,7 +64,7 @@ apiVersion: autoscaling/v1
 #apiVersion: autoscaling/v2beta2  # k8s 1.6+ - scale using the largest of multiple metrics
 kind: HorizontalPodAutoscaler
 metadata:
-  name: backens
+  name: backend
   namespace: expense
 spec:
   scaleTargetRef:
