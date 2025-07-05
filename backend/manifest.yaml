@@ -58,4 +58,19 @@ spec:
   - name: backend-port
     protocol: TCP
     port: 8080
-    targetPort: 8080      
+    targetPort: 8080 
+---
+apiVersion: autoscaling/v1
+#apiVersion: autoscaling/v2beta2  # k8s 1.6+ - scale using the largest of multiple metrics
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backens
+  namespace: expense
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: backend
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 15 # by default in real time utilization percentage is 75         
