@@ -39,7 +39,7 @@ spec:
             cpu: "120m"
           limits:
             memory: "128Mi"
-            cpu: "500m"
+            cpu: "120m"
         envFrom:
         - configMapRef:
             name: backend
