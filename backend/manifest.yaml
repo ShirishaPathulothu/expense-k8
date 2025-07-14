@@ -30,13 +30,13 @@ spec:
         tier: api
         project: expense
     spec:
-      containers:
-      - name:  backend
-        image: shirisha02/backend:v1
       initContainers:
       - name: init-myservice
         image: busybox:1.28
-        command: ['sh', '-c', "until nslookup mysql; do echo waiting for myservice; sleep 2; done"]  
+        command: ['sh', '-c', "until nslookup mysql; do echo waiting for myservice; sleep 2; done"]
+      containers:
+      - name:  backend
+        image: shirisha02/backend:v1  
         resources:
           requests:
             memory: "100Mi"
